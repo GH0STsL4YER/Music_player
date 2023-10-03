@@ -68,20 +68,30 @@ def resume():
 #main screen
 master = Tk()
 master.title("Tuneify")
+master.geometry("900x600")
 
 #labels
-Label(master,text="My Playlist",font=("ariel",15),fg="#7E019A").grid(sticky="N",row=0,padx=120)
-Label(master,text="Volume",font=("ariel",15),fg="#7E019A").grid(sticky="N",row=4,padx=120)
-song_title_label = Label(master,font=("ariel",12))
-song_title_label.grid(sticky="N",row=3)
-volume_label = Label(master,font=("ariel",12))
-volume_label.grid(sticky="N",row=5)
+headline_label = Label(master,text="My Playlist",font=("ariel",17),fg="#7E019A")
+headline_label.place(x=400, y=10)
+#volume_label = Label(master,text="Volume",font=("ariel",17),fg="#7E019A")
+#volume_label.place(x=415,y=200)
+song_title_label = Label(master,font=("ariel",10))
+song_title_label.place(x=350,y=140)
+volume_label = Label(master,font=("ariel",17))
+volume_label.place(x=385,y=200)
 
 #buttons
-Button(master, text="Select Song", font=("ariel",12),command=play_song).grid(row=2,sticky="N")
-Button(master, text="Pause", font=("ariel",12),command=pause).grid(row=3,sticky="E")
-Button(master, text="Resume", font=("ariel",12),command=resume).grid(row=3,sticky="W")  
-Button(master, text="-", font=("ariel",12),width=5,command=reduce_volume).grid(row=5,sticky="W")
-Button(master, text="+", font=("ariel",12),width=5,command=increase_volume).grid(row=5,sticky="E")
+select_song = Button(master, text="Select Song", font=("ariel",17),command=play_song)
+select_song.place(x=385,y=50)
+Pause = Button(master, text="Pause", font=("ariel",17),command=pause)
+Pause.place(x=220,y=140)
+Resume = Button(master, text="Resume", font=("ariel",17),command=resume)
+Resume.place(x=600,y=140)
+Volume_down = Button(master, text="-", font=("ariel",17),width=5,command=reduce_volume)
+Volume_down.place(x=600,y=200)
+Volume_up = Button(master, text="+", font=("ariel",17),width=5,command=increase_volume)
+Volume_up.place(x=230,y=200)
+
 
 master.mainloop()
+
