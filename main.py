@@ -7,7 +7,7 @@ from sqlalchemy import create_engine, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from passlib.hash import sha256_crypt
-from music_player import *
+
 
 # SQLite veritabanı oluşturmaimport tkinter as tk
 engine = create_engine('sqlite:///user.db', echo=False)
@@ -89,8 +89,26 @@ def login():
       for l in liste:
           l.destroy() # yok et
       if user.username == "Mustafa":
-         Admin_app = master()
-   
+         #Admin_app = master()
+         import music_player 
+         master = tk()
+         master.title("Tuneify")
+
+         #labels
+         music_player.Label(master,text="My Playlist",font=("ariel",15),fg="#7E019A").grid(sticky="N",row=0,padx=120)
+         music_player.Label(master,text="Volume",font=("ariel",15),fg="#7E019A").grid(sticky="N",row=5,padx=120)
+         song_title_label = tk.Label(master,font=("ariel",12))
+         song_title_label.grid(sticky="N",row=3)
+         volume_label = tk.Label(master,font=("ariel",12))
+         volume_label.grid(sticky="N",row=5)
+
+         #buttons
+         music_player.Button(master, text="Select Song", font=("ariel",12),command=music_player.play_song).grid(row=2,sticky="N")
+         music_player.Button(master, text="Pause", font=("ariel",12),command=music_player.pause).grid(row=3,sticky="E")
+         music_player.Button(master, text="Resume", font=("ariel",12),command=music_player.resume).grid(row=3,sticky="W")  
+         music_player.Button(master, text="-", font=("ariel",12),width=5,command=music_player.reduce_volume).grid(row=5,sticky="W")
+         music_player.Button(master, text="+", font=("ariel",12),width=5,command=music_player.increase_volume).grid(row=5,sticky="E")
+              
    else:
       messagebox.showerror("Hata", "Kullanıcı adı veya şifre yanlış!")
    session.close()        
